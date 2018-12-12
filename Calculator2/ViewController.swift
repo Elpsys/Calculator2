@@ -44,12 +44,15 @@ public struct Stack<T> {
 
 
 class ViewController: UIViewController {
-    var myStack = Stack<Double>()
+    var myOperator = Stack<Int>()
+    var myNumber = Stack<Double>()
     @IBOutlet weak var output: UITextField!
     var temp:Double = 0
     var Operator:Int = 0
+    var instead:Int = 0
     var temp1:Double = 0
     var changenumber:Double = 0
+    var temp2:Double = 0
     var temp4:Double = 0
     var control1:Int = 0
     var control2:Int = 0
@@ -80,6 +83,8 @@ class ViewController: UIViewController {
             Operator = 3
         }
         temp1 = 0
+        myOperator.push(element: Operator)
+        myNumber.push(element: temp)
     }
     
     @IBAction func divide(_ sender: UIButton) {
@@ -94,6 +99,8 @@ class ViewController: UIViewController {
             output.text = ""
             Operator = 4
         }
+        myOperator.push(element: Operator)
+        myNumber.push(element: temp)
         temp1 = 0
 
     }
@@ -110,20 +117,20 @@ class ViewController: UIViewController {
             Operator = 2
         }
         temp1 = 0
-
+        if myOperator.pop() == 1
+        {
+            temp = myNumber.pop()! + temp
+            output.text = "\(temp)"
+            control2 = 1
+        }
+        myOperator.push(element: Operator)
+        myNumber.push(element: temp)
     }
     @IBAction func add(_ sender: UIButton) {
         if output.text == ""
         {
             output.text = ""
             Operator = 1
-        }
-        else if Operator == 1
-        {
-            temp = temp + Double(output.text!)!
-            myStack.push(element: temp)
-            
-            control2 = 1
         }
         else
         {
@@ -132,7 +139,15 @@ class ViewController: UIViewController {
             Operator = 1
         }
         temp1 = 0
+        if myOperator.pop() == 2
+        {
+            temp = myNumber.pop()! - temp
+            output.text = "\(temp)"
+            control2 = 1
+        }
         
+        myOperator.push(element: Operator)
+        myNumber.push(element: temp)
     }
     
     @IBAction func equel(_ sender: UIButton) {
@@ -163,12 +178,27 @@ class ViewController: UIViewController {
         temp1 = 0
         control1 = 1
         Operator = 0
+        control2 = 0
+        if !myNumber.isEmpty()
+        {
+            myNumber.pop()
+        }
+        if !myOperator.isEmpty()
+        {
+            myOperator.pop()
+        }
     }
     @IBAction func number1(_ sender: UIButton) {
         if output.text == "0"
         {
             output.text = ""
             output.text = output.text! + "1"
+        }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "1"
+            control2 = 0
         }
         else if control1 == 1
         {
@@ -188,6 +218,12 @@ class ViewController: UIViewController {
             output.text = ""
             output.text = output.text! + "2"
         }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "2"
+            control2 = 0
+        }
         else if control1 == 1
         {
             output.text = ""
@@ -205,6 +241,12 @@ class ViewController: UIViewController {
         {
             output.text = ""
             output.text = output.text! + "3"
+        }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "3"
+            control2 = 0
         }
         else if control1 == 1
         {
@@ -224,6 +266,12 @@ class ViewController: UIViewController {
             output.text = ""
             output.text = output.text! + "4"
         }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "4"
+            control2 = 0
+        }
         else if control1 == 1
         {
             output.text = ""
@@ -241,6 +289,12 @@ class ViewController: UIViewController {
         {
             output.text = ""
             output.text = output.text! + "5"
+        }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "5"
+            control2 = 0
         }
         else if control1 == 1
         {
@@ -260,6 +314,12 @@ class ViewController: UIViewController {
             output.text = ""
             output.text = output.text! + "6"
         }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "6"
+            control2 = 0
+        }
         else if control1 == 1
         {
             output.text = ""
@@ -277,6 +337,12 @@ class ViewController: UIViewController {
         {
             output.text = ""
             output.text = output.text! + "7"
+        }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "7"
+            control2 = 0
         }
         else if control1 == 1
         {
@@ -296,6 +362,12 @@ class ViewController: UIViewController {
             output.text = ""
             output.text = output.text! + "8"
         }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "8"
+            control2 = 0
+        }
         else if control1 == 1
         {
             output.text = ""
@@ -314,6 +386,12 @@ class ViewController: UIViewController {
             output.text = ""
             output.text = output.text! + "9"
         }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "9"
+            control2 = 0
+        }
         else if control1 == 1
         {
             output.text = ""
@@ -331,6 +409,12 @@ class ViewController: UIViewController {
         {
             output.text = ""
             output.text = output.text! + "0"
+        }
+        else if control2 == 1
+        {
+            output.text = ""
+            output.text = output.text! + "0"
+            control2 = 0
         }
         else if control1 == 1
         {
